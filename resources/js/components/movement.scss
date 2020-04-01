@@ -1,0 +1,125 @@
+$width: 95vw;
+$height: 90vh;
+
+.movement_virus {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    background: transparent;
+    z-index: 10;
+
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.mod_1 {
+    animation-name: slidethrough1;
+    animation-duration: 7s;
+}
+
+.mod_2 {
+    top: 0;
+    right: 0;
+    animation-name: slidethrough2;
+    animation-duration: 6s;
+    animation-delay: 1s;
+}
+
+.mod_3 {
+    left: 0;
+    bottom: 0;
+    animation-name: slidethrough3;
+    animation-duration: 15s;
+    animation-delay: 1.5s;
+}
+
+.mod_4 {
+    right: 0;
+    bottom: $height / 2;
+    animation-name: slidethrough4;
+    animation-duration: 14s;
+    animation-delay: 0.5s;
+    animation-direction: normal;
+}
+
+@keyframes slidethrough1 {
+
+    @for $i from 0 through 800 {
+        #{$i / 8}% {
+            top: $height / 50 * $i /16;
+            left: $width / 50 * $i /16;
+        }
+    }
+}
+
+@keyframes slidethrough2 {
+
+    @for $i from 0 through 800 {
+        #{$i / 8}% {
+            top: $height / 50 * $i /16;
+            right: $width / 50 * $i /16;
+        }
+    }
+}
+
+@keyframes slidethrough3 {
+
+    @for $i from 0 through 200 {
+        #{$i / 8}% {
+            bottom: $height / 50 * $i /4;
+            left: $width / 50 * $i /16;
+        }
+    }
+
+    @for $i from 201 through 400 {
+        #{$i / 8}% {
+            bottom: $height / 50 * (100 - $i /4);
+            left: $width / 50 * $i /16;
+        }
+    }
+
+    @for $i from 401 through 600 {
+        #{$i / 8}% {
+            bottom: $height / 50 * ($i - 400 ) / 4;
+            left: $width / 50 * $i /16;
+        }
+    }
+
+    @for $i from 601 through 800 {
+        #{$i / 8}% {
+            bottom: $height / 50 * (100 - ($i - 400) / 4);
+            left: $width / 50 * $i /16;
+        }
+    }
+}
+
+@keyframes slidethrough4 {
+
+    @for $i from 0 through 200 {
+        #{$i / 8}% {
+            bottom: $height / 2 - $height / 50 * $i / 8;
+            left: $width - $width / 50 * $i / 8;
+        }
+    }
+
+    @for $i from 201 through 400 {
+        #{$i / 8}% {
+            bottom: $height / 50 * ($i - 200) / 8;
+            left: $width - $width / 50 * $i / 8;
+        }
+    }
+
+    @for $i from 401 through 600 {
+        #{$i / 8}% {
+            bottom: $height / 2 + $height / 50 * ($i - 400)/ 8;
+            left: $width / 50 * ($i - 400) / 8;
+        }
+    }
+
+    @for $i from 601 through 800 {
+        #{$i / 8}% {
+            bottom: $height - $height / 50 * ($i - 600)/ 8;
+            left: $width / 50 * ($i - 400) / 8;
+        }
+    }
+}

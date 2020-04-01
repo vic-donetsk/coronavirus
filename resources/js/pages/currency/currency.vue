@@ -29,7 +29,7 @@
         },
         beforeCreate() {
             document.title = 'Карантин - курсы валют';
-            axios.get('http://curl')
+            axios.get('api/curses')
                 .then((response) => {
                     this.curses = response.data;
                 });

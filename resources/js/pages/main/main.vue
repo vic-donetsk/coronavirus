@@ -1,11 +1,11 @@
 <template>
     <div>
+        <movement-virus/>
         <div>
             <div v-for="(virus, key, index) in virusInfo" :key="index">
                 {{virusTitle[index]}}
                 {{virus}}
             </div>
-
         </div>
 
 
@@ -16,9 +16,12 @@
 </template>
 
 <script>
+
+    import movementVirus from './../../components/movement';
+
     export default {
-        head: {
-            title: 'Карантин INFO'
+        components: {
+            'movement-virus': movementVirus
         },
         data: function () {
             return {
