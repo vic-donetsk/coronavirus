@@ -1,0 +1,50 @@
+.virusTable {
+    width: 90vw;
+    margin: 0 auto;
+    border-right: 2px solid black;
+    box-sizing: border-box;
+    * {
+        box-sizing: border-box;
+    }
+
+    &_row {
+        display: flex;
+        border-top: 2px solid black;
+
+        &:last-of-type {
+            border-bottom: 2px solid black;
+        }
+
+        &:last-child {
+            border-right: 2px solid black;
+        }
+
+        &-item {
+            display: flex;
+            width: 8vw;
+            justify-content: flex-end;
+            align-items: center;
+            border-left: 2px solid black;
+            padding: 5px 10px;
+
+            &.mod_name {
+                justify-content: flex-start;
+                width: 14vw;
+                text-align: left;
+            }
+
+            &.mod_num {
+                width: 4vw;
+            }
+
+            &.mod_header {
+                justify-content: center;
+                text-align: center;
+                font-weight: bold;
+                text-transform: capitalize;
+            }
+        }
+
+
+    }
+}
