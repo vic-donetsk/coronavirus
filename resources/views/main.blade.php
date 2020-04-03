@@ -9,10 +9,21 @@
 
         <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
 
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:100,200,300,500,600,700,900" rel="stylesheet">
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
+        <style>
+            html * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Nunito', sans-serif;
+            }
+        </style>
+
     </head>
+
+
 
     <body>
     <div style="position:absolute;visibility: hidden;

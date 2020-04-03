@@ -33,7 +33,6 @@ window.EventBus = new Vue();
 
 Vue.use(VueRouter);
 
-
 const app = new Vue({
     store,
     router,
