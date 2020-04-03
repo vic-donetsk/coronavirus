@@ -1,17 +1,18 @@
 <template>
-    <div>
-        <movement-virus/>
-        <div>
-            <div v-for="(virus, key, index) in virusInfo" :key="index">
-                {{virusTitle[index]}}
-                {{virus}}
+    <div class="main">
+        <div class="main_aside"></div>
+        <div class="main_content">
+            <movement-virus/>
+            <div class="main_content-info">
+                <div v-for="(virus, key, indexVirus) in virusInfo" :key="indexVirus">
+                    {{virusTitle[indexVirus]}}
+                    {{virus}}
+                </div>
+                <router-link v-for="(item, index) in menu" :key="index" :to="item.route">
+                    {{item.title}}
+                </router-link>
             </div>
         </div>
-
-
-        <router-link v-for="(item, index) in menu" :key="index" :to="item.route">
-            {{item.title}}
-        </router-link>
     </div>
 </template>
 
@@ -47,4 +48,29 @@
         }
     }
 </script>
+
+<style lang="scss">
+    .main {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+
+        &_aside {
+            width: 300px;
+            height: 100%;
+            background-image: url("/images/stalevar.jpg");
+        }
+
+        &_content {
+            width: 100%;
+            height: 100%;
+            position: relative;
+
+            &-info {
+
+            }
+        }
+
+    }
+</style>
 

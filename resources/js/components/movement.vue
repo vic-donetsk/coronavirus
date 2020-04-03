@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="movement">
         <svg class="movement_virus mod_1">
             <use xlink:href="#firstVirus"></use>
         </svg>
