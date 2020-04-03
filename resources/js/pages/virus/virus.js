@@ -1,4 +1,6 @@
-import Footer from './../../components/footer.vue';
+import Footer from './../../components/footer/footer.vue';
+import mainMenu from './../../components/main-menu/main-menu.vue';
+import movementVirus from "../../components/movement/movement";
 
 export default {
     head: {
@@ -25,13 +27,9 @@ export default {
         }
     },
     components: {
-        'my-footer': Footer
+        'my-footer': Footer,
+        'main-menu': mainMenu
     },
-    // computed: {
-    //     sortedTable: function() {
-    //
-    //     }
-    // },
     beforeCreate() {
         document.title = 'Карантин - детали';
         axios.get('https://coronavirus-19-api.herokuapp.com/countries')

@@ -1,0 +1,24 @@
+.mainMenu {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    z-index: 2;
+
+    &_item {
+        font-size: 20px;
+        font-weight: bold;
+        color: #000;
+        cursor: pointer;
+
+        &:hover {
+            color: blue;
+        }
+
+        &.mod_active {
+            font-style: italic;
+            color: blue;
+            cursor: default;
+        }
+    }
+}

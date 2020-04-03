@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <my-footer/>
+        <main-menu :activeItem="1" />
 
         <div class="virusTable">
             <div class="virusTable_row mod_header">
