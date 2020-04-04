@@ -1,3 +1,23 @@
 footer {
+    position: relative;
+    z-index: 2;
+    
+    padding: 15px;
+    font-size: 10px;
     text-align: center;
+    color: #000;
+    background: #b4ffff;
+    border-top: 2px solid #000;
+
+    .footer_thanks {
+        font-weight: 600;
+        span {
+            color: #66000a;
+            font-weight: 900;
+        }
+    }
+    .footer_copyright {
+        font-weight: 700;
+        letter-spacing: 0.2em;
+    }
 }

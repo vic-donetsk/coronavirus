@@ -13,6 +13,6 @@
 
 <script src="./main-menu.js"></script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     @import "main-menu";
 </style>

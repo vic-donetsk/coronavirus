@@ -12,6 +12,6 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     @import 'currencyTable';
 </style>

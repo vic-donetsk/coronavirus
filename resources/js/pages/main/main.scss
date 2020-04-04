@@ -59,6 +59,9 @@
         position: relative;
         width: 100%;
         height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
         &-title {
             margin: 50px 10px 25px;

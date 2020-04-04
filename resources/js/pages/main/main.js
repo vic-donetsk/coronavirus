@@ -1,10 +1,12 @@
 import movementVirus from './../../components/movement/movement';
 import mainMenu from './../../components/main-menu/main-menu.vue';
+import Footer from './../../components/footer/footer.vue';
 
 export default {
     components: {
         'movement-virus': movementVirus,
-        'main-menu': mainMenu
+        'main-menu': mainMenu,
+        'my-footer': Footer
     },
     data: function () {
         return {
