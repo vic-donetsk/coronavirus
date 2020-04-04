@@ -3,9 +3,6 @@ import mainMenu from './../../components/main-menu/main-menu.vue';
 import movementVirus from "../../components/movement/movement";
 
 export default {
-    head: {
-        title: 'Карантин INFO - вирус'
-    },
     data: function () {
         return {
             tableHeaders: [
@@ -23,7 +20,8 @@ export default {
             ],
             tableRows: [],
             activeItem: 'cases',
-            ascDirection: false
+            ascDirection: false,
+            errorMessage: "К сожалению, сервер временно недоступен. Попробуйте получить информацию позднее"
         }
     },
     components: {
@@ -36,7 +34,10 @@ export default {
             .then((response) => {
                 this.tableRows = response.data;
                 this.sortData(this.activeItem, this.ascDirection);
-            });
+            })
+            .catch((error) => {
+            // handle error
+        });
     },
     methods: {
         sortData(fieldKey, ascDirection) {
