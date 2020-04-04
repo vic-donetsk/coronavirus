@@ -39,14 +39,15 @@
                         <div class="virusTable_row-item mod_num">
                             {{i+1}}
                         </div>
-                        <div v-for="(country, key, index) in tableRow"
-                             :key='index' v-if="key !== 'firstCase'"
+<!--                             v-if="key !== 'firstCase'"-->
+                        <div v-for="(columnName, index) in columnNames"
+                             :key='index'
                              class="virusTable_row-item"
-                             :class="[key, { 'mod_name' : index===0, 'mod_today': country != 0}]"
+                             :class="[columnName, { 'mod_name' : index===0, 'mod_today': tableRow[columnName] != 0}]"
                         >
-                            <div v-if="country != 0">
-                                <span v-if="['todayCases', 'todayDeaths'].indexOf(key) !== -1">+</span>
-                                {{country}}
+                            <div v-if="tableRow[columnName] != 0">
+                                <span v-if="['todayCases', 'todayDeaths'].indexOf(columnName) !== -1">+</span>
+                                {{tableRow[columnName]}}
                             </div>
                         </div>
                     </div>
@@ -55,6 +56,10 @@
                     {{errorMessage}}
                 </div>
             </div>
+
+            <button class="virusTable_scrollButton" :class="{mod_home: notScrolled}" @click="scrollHome">
+                UP
+            </button>
         </div>
 
         <my-footer/>

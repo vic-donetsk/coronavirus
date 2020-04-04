@@ -8,11 +8,8 @@
 
 .virusTable {
     width: 90vw;
-    margin: 0 auto;
-    box-sizing: border-box;
-    * {
-        box-sizing: border-box;
-    }
+    margin: 0 auto 50px;
+    border-right: 2px solid black;
 
     &_row {
         display: flex;
@@ -20,10 +17,6 @@
 
         &:last-of-type {
             border-bottom: 2px solid black;
-        }
-
-        &:last-child {
-            border-right: 2px solid black;
         }
 
         &.mod_header {
@@ -40,6 +33,7 @@
             padding: 5px 10px;
             border-left: 2px solid black;
             font-weight: bold;
+            background: #c7ffd7;
 
             &.mod_name {
                 width: 14vw;
@@ -62,10 +56,6 @@
                 font-weight: 900;
                 text-transform: uppercase;
                 color: #000;
-
-                &:last-of-type {
-                    border-right: 2px solid black;
-                }
 
                 .header_title {
                     cursor: pointer;
@@ -107,6 +97,23 @@
             &.mod_active {
                 fill: blue;
             }
+        }
+    }
+
+    &_scrollButton {
+        position: fixed;
+        bottom: 15px;
+        right: 15px;
+        width: 35px;
+        height: 35px;
+        border-radius: 5px;
+        outline: none;
+        font-size: 12px;
+        font-weight: 700;
+        z-index: 5;
+
+        &.mod_home {
+            display: none;
         }
     }
 }

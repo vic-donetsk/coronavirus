@@ -1,6 +1,5 @@
 import Footer from './../../components/footer/footer.vue';
 import mainMenu from './../../components/main-menu/main-menu.vue';
-import movementVirus from "../../components/movement/movement";
 
 export default {
     data: function () {
@@ -18,10 +17,14 @@ export default {
                 {title: 'случаев на миллион', class: 'casesPerOneMillion'},
                 {title: 'смертей на миллион', class: 'deathsPerOneMillion'},
             ],
+            columnNames: ['country','cases', 'todayCases', 'deaths', 'todayDeaths', 'recovered', 'active',
+                'critical', 'casesPerOneMillion', 'deathsPerOneMillion'],
             tableRows: [],
             activeItem: 'cases',
             ascDirection: false,
-            errorMessage: "К сожалению, сервер временно недоступен. Попробуйте получить информацию позднее"
+            errorMessage: "К сожалению, сервер временно недоступен. Попробуйте получить информацию позднее",
+            notScrolled: true,
+            scrollTime: 1000
         }
     },
     components: {
@@ -39,6 +42,21 @@ export default {
             // handle error
         });
     },
+    mounted() {
+        this.$nextTick(() => {
+            // Code that will run only after the
+            // entire view has been rendered
+
+            //если страница загрузилась с сохраненным скроллом
+            if (window.pageYOffset > 100)  {
+                this.notScrolled = false;
+            }
+            // и при любом перемещении по документу
+            window.addEventListener('scroll', () => {
+                this.notScrolled = window.pageYOffset <= 100;
+            });
+        })
+    },
     methods: {
         sortData(fieldKey, ascDirection) {
             if (ascDirection)
@@ -47,6 +65,18 @@ export default {
                 this.tableRows.sort((a, b) => a[fieldKey] < b[fieldKey] ? 1 : -1);
             this.activeItem = fieldKey;
             this.ascDirection = ascDirection;
+        },
+        scrollHome() {
+            let currentScroll = window.pageYOffset;
+            let scrollStep = Math.trunc(currentScroll/this.scrollTime*50);
+            let timerId = setInterval( () => {
+                if (window.pageYOffset > scrollStep) {
+                    window.scrollBy(0, -scrollStep);
+                } else {
+                    window.scrollTo(0,0);
+                    clearInterval(timerId);
+                }
+            }, 50);
         }
     }
 
