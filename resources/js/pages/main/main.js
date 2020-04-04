@@ -14,18 +14,21 @@ export default {
                 recovered: null
             },
             menu: [
-                {title: 'Вирус по странам', route: '/virus'},
-                {title: 'Курсы валют', route: '/currency'}
+                {title: 'Детально по государствам', route: '/virus'},
+                {title: 'Состояние валютного рынка', route: '/currency'}
             ],
             mainHeader: {name: 'Мариуполь', feature: 'на карантине'},
-            virusTitle: ['Всего инфицировано:', 'Умерли:', 'Выздоровели:'],
+            virusTitle: [
+                {title: 'Всего инфицировано:', color: '#ff9700'},
+                {title: 'Умерли:', color: '#b60009'},
+                {title: 'Выздоровели:', color: '#43ff00'}]
         }
     },
     beforeCreate() {
         axios.get('https://coronavirus-19-api.herokuapp.com/all')
             .then((response) => {
                 for (let key in response.data) {
-                    this.virusInfo[key] = response.data[key];
+                    this.virusInfo[key] = new Intl.NumberFormat('ru-RU').format(response.data[key]);
                 }
             });
     }

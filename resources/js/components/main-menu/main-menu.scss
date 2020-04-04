@@ -10,6 +10,7 @@
         font-weight: bold;
         color: #000;
         cursor: pointer;
+        transition: color .3s ease;
 
         &:hover {
             color: blue;
