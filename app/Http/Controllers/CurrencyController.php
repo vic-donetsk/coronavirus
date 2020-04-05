@@ -17,6 +17,12 @@ class CurrencyController extends Controller
         // close cURL resource, and free up system resources
         curl_close($ch);
 
+        if ($page === false) {
+            // ошибка запроса
+
+            return response()->json(false);
+        }
+
         $tmp_array = explode('currencies__block-link', $page);
 
         $result_array = [];

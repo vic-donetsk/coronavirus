@@ -1,7 +1,7 @@
 <template>
     <div class="main">
 
-        <preloader :isLoaded="isLoaded" />
+        <preloader :isLoaded="isLoaded"/>
 
         <div class="main_aside"></div>
         <div class="main_content">
@@ -16,11 +16,15 @@
                 <h1 class="main_content-title">Сводные данные по планете:</h1>
 
                 <div class="main_content-info">
-                    <div v-for="(virus, key, indexVirus) in virusInfo" :key="indexVirus" class="info-row">
-                        <p>{{virusTitle[indexVirus].title}}</p>
-                        <p :style="'color:' + virusTitle[indexVirus].color">{{virus}}</p>
+                    <div v-if="!hasError">
+                        <div v-for="(virus, key, indexVirus) in virusInfo" :key="indexVirus" class="info-row">
+                            <p>{{virusTitle[indexVirus].title}}</p>
+                            <p :style="'color:' + virusTitle[indexVirus].color">{{virus}}</p>
+                        </div>
                     </div>
+                    <error-message v-else style="line-height: 1.5"/>
                 </div>
+
 
                 <div class="main_content-links">
                     <router-link v-for="(item, index) in menu"

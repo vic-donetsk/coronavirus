@@ -2,13 +2,15 @@ import movementVirus from './../../components/movement/movement';
 import mainMenu from './../../components/main-menu/main-menu.vue';
 import Footer from './../../components/footer/footer.vue';
 import Preloader from './../../components/preloader/preloader.vue';
+import errorMessage from './../../components/errorMessage/errorMessage.vue';
 
 export default {
     components: {
         'preloader': Preloader,
         'movement-virus': movementVirus,
         'main-menu': mainMenu,
-        'my-footer': Footer
+        'my-footer': Footer,
+        'error-message': errorMessage
     },
     data: function () {
         return {
@@ -26,7 +28,8 @@ export default {
                 {title: 'Всего инфицировано:', color: '#ff9700'},
                 {title: 'Умерли:', color: '#b60009'},
                 {title: 'Выздоровели:', color: '#43ff00'}],
-            isLoaded: false
+            isLoaded: false,
+            hasError: true
         }
     },
     beforeCreate() {
@@ -35,6 +38,12 @@ export default {
                 for (let key in response.data) {
                     this.virusInfo[key] = new Intl.NumberFormat('ru-RU').format(response.data[key]);
                 }
+                this.hasError = false;
+            })
+            .catch((error) => {
+                // handle error
+            })
+            .then(() => {
                 this.isLoaded = true;
             });
     }

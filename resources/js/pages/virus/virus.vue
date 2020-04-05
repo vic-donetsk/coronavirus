@@ -6,7 +6,7 @@
         <div class="virusTable_wrapper">
             <main-menu :activeItem="1"/>
 
-            <div class="virusTable">
+            <div v-if="!hasError" class="virusTable">
                 <div class="virusTable_row mod_header">
                     <div v-for="(header, index) in tableHeaders"
                          class="virusTable_row-item mod_header-item"
@@ -37,27 +37,25 @@
 
                     </div>
                 </div>
-                <div v-if="tableRows">
-                    <div v-for="(tableRow, i) in tableRows" class="virusTable_row">
-                        <div class="virusTable_row-item mod_num">
-                            {{i+1}}
-                        </div>
-<!--                             v-if="key !== 'firstCase'"-->
-                        <div v-for="(columnName, index) in columnNames"
-                             :key='index'
-                             class="virusTable_row-item"
-                             :class="[columnName, { 'mod_name' : index===0, 'mod_today': tableRow[columnName] != 0}]"
-                        >
-                            <div v-if="tableRow[columnName] != 0">
-                                <span v-if="['todayCases', 'todayDeaths'].indexOf(columnName) !== -1">+</span>
-                                {{tableRow[columnName]}}
-                            </div>
+
+                <div v-for="(tableRow, i) in tableRows" class="virusTable_row">
+                    <div class="virusTable_row-item mod_num">
+                        {{i+1}}
+                    </div>
+                    <div v-for="(columnName, index) in columnNames"
+                         :key='index'
+                         class="virusTable_row-item"
+                         :class="[columnName, { 'mod_name' : index===0, 'mod_today': tableRow[columnName] != 0}]"
+                    >
+                        <div v-if="tableRow[columnName] != 0">
+                            <span v-if="['todayCases', 'todayDeaths'].indexOf(columnName) !== -1">+</span>
+                            {{tableRow[columnName]}}
                         </div>
                     </div>
                 </div>
-                <div v-else class="virusTable_error">
-                    {{errorMessage}}
-                </div>
+            </div>
+            <div v-else class="virusTable_error">
+                <error-message />
             </div>
 
             <button class="virusTable_scrollButton" :class="{mod_home: notScrolled}" @click="scrollHome">

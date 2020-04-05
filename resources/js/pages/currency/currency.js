@@ -2,6 +2,7 @@
 import Preloader from '../../components/preloader/preloader.vue';
 import mainMenu from "../../components/main-menu/main-menu.vue";
 import Footer from '../../components/footer/footer.vue';
+import errorMessage from './../../components/errorMessage/errorMessage.vue';
 
 export default {
     data: function () {
@@ -10,13 +11,15 @@ export default {
             isLoaded: false,
             textDate:'',
             fileNames: ['dollar', 'euro', 'rouble'],
-            currencyNames: ['доллар США', 'евро', 'Рубль России']
+            currencyNames: ['доллар США', 'евро', 'Рубль России'],
+            hasError: true
         }
     },
     components: {
         'preloader': Preloader,
         'main-menu': mainMenu,
-        'my-footer': Footer
+        'my-footer': Footer,
+        'error-message': errorMessage
     },
     created() {
         document.title = 'Карантин - курсы валют';
@@ -27,6 +30,7 @@ export default {
                 let monthA = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
                 this.textDate = currentData.getDate() + ' ' + monthA[currentData.getMonth()] + ' ' + currentData.getFullYear() + ' года,     ' +
                     currentData.getHours() + ':' + currentData.getMinutes();
+                this.hasError = false;
             })
             .catch((error) => {
                 // handle error

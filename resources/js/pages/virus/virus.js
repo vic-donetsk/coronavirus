@@ -1,6 +1,7 @@
 import Footer from './../../components/footer/footer.vue';
 import mainMenu from './../../components/main-menu/main-menu.vue';
 import Preloader from './../../components/preloader/preloader.vue';
+import errorMessage from './../../components/errorMessage/errorMessage.vue';
 
 export default {
     data: function () {
@@ -23,23 +24,25 @@ export default {
             tableRows: [],
             activeItem: 'cases',
             ascDirection: false,
-            errorMessage: "К сожалению, сервер временно недоступен. Попробуйте получить информацию позднее",
             notScrolled: true,
             scrollTime: 1000,
-            isLoaded: false
+            isLoaded: false,
+            hasError: true
         }
     },
     components: {
         'my-footer': Footer,
         'main-menu': mainMenu,
-        'preloader': Preloader
+        'preloader': Preloader,
+        'error-message': errorMessage
     },
-    beforeCreate() {
+    created() {
         document.title = 'Карантин - детали';
         axios.get('https://coronavirus-19-api.herokuapp.com/countries')
             .then((response) => {
                 this.tableRows = response.data;
                 this.sortData(this.activeItem, this.ascDirection);
+                this.hasError = false;
             })
             .catch((error) => {
                 // handle error
