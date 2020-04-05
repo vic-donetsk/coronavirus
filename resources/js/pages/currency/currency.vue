@@ -1,50 +1,36 @@
 <template>
-    <div>
+    <div class="currency_wrapper">
 
         <preloader :isLoaded="isLoaded" />
 
         <main-menu :activeItem="2" />
+
         <div class="currency">
-            <div v-for="curs in curses">
-                Покупка: {{curs[0]}} Продажа: {{curs[1]}}
+            <div class="currency_title">Курсы по состоянию на {{textDate}}</div>
+            <div class="currency_row">
+                <div class="currency_row-item"></div>
+                <div class="currency_row-item mod_head">Покупка</div>
+                <div class="currency_row-item mod_head">Продажа</div>
+            </div>
+            <div v-for="(curs, index) in curses" class="currency_row">
+                <div class="currency_row-item mod_name">
+                    <img :src="'/images/'+fileNames[index]+'.png'" alt="" class="coin">
+                    <p>{{currencyNames[index]}}</p>
+                </div>
+                <div class="currency_row-item mod_data">{{curs[0]}}</div>
+                <div class="currency_row-item mod_data">{{curs[1]}}</div>
             </div>
         </div>
+
         <my-footer/>
+
     </div>
 </template>
 
-<script>
+<script src="./currency.js">
 
-    import Preloader from '../../components/preloader/preloader.vue';
-    import mainMenu from "../../components/main-menu/main-menu.vue";
-    import Footer from '../../components/footer/footer.vue';
-
-    export default {
-        data: function () {
-            return {
-                curses: null,
-                isLoaded: false
-            }
-        },
-        components: {
-            'preloader': Preloader,
-            'main-menu': mainMenu,
-            'my-footer': Footer
-        },
-        beforeCreate() {
-            document.title = 'Карантин - курсы валют';
-            axios.get('api/curses')
-                .then((response) => {
-                    this.curses = response.data;
-                })
-                .catch((error) => {
-                    // handle error
-                })
-                .then(() => {
-                    setTimeout(() => this.isLoaded = true, 1000);
-                });
-        }
-
-
-    }
 </script>
+
+<style lang="scss" scoped>
+    @import './currency.scss';
+</style>
