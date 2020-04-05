@@ -1,5 +1,8 @@
 <template>
     <div class="virusPage">
+
+        <preloader :isLoaded="isLoaded" />
+
         <div class="virusTable_wrapper">
             <main-menu :activeItem="1"/>
 

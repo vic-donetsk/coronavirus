@@ -1,5 +1,8 @@
 <template>
     <div class="main">
+
+        <preloader :isLoaded="isLoaded" />
+
         <div class="main_aside"></div>
         <div class="main_content">
             <div>

@@ -1,5 +1,6 @@
 import Footer from './../../components/footer/footer.vue';
 import mainMenu from './../../components/main-menu/main-menu.vue';
+import Preloader from './../../components/preloader/preloader.vue';
 
 export default {
     data: function () {
@@ -17,19 +18,21 @@ export default {
                 {title: 'случаев на миллион', class: 'casesPerOneMillion'},
                 {title: 'смертей на миллион', class: 'deathsPerOneMillion'},
             ],
-            columnNames: ['country','cases', 'todayCases', 'deaths', 'todayDeaths', 'recovered', 'active',
+            columnNames: ['country', 'cases', 'todayCases', 'deaths', 'todayDeaths', 'recovered', 'active',
                 'critical', 'casesPerOneMillion', 'deathsPerOneMillion'],
             tableRows: [],
             activeItem: 'cases',
             ascDirection: false,
             errorMessage: "К сожалению, сервер временно недоступен. Попробуйте получить информацию позднее",
             notScrolled: true,
-            scrollTime: 1000
+            scrollTime: 1000,
+            isLoaded: false
         }
     },
     components: {
         'my-footer': Footer,
-        'main-menu': mainMenu
+        'main-menu': mainMenu,
+        'preloader': Preloader
     },
     beforeCreate() {
         document.title = 'Карантин - детали';
@@ -39,7 +42,10 @@ export default {
                 this.sortData(this.activeItem, this.ascDirection);
             })
             .catch((error) => {
-            // handle error
+                // handle error
+            })
+            .then(() => {
+                setTimeout(() => this.isLoaded = true, 1000);
         });
     },
     mounted() {
@@ -48,7 +54,7 @@ export default {
             // entire view has been rendered
 
             //если страница загрузилась с сохраненным скроллом
-            if (window.pageYOffset > 100)  {
+            if (window.pageYOffset > 100) {
                 this.notScrolled = false;
             }
             // и при любом перемещении по документу
@@ -68,12 +74,12 @@ export default {
         },
         scrollHome() {
             let currentScroll = window.pageYOffset;
-            let scrollStep = Math.trunc(currentScroll/this.scrollTime*50);
-            let timerId = setInterval( () => {
+            let scrollStep = Math.trunc(currentScroll / this.scrollTime * 50);
+            let timerId = setInterval(() => {
                 if (window.pageYOffset > scrollStep) {
                     window.scrollBy(0, -scrollStep);
                 } else {
-                    window.scrollTo(0,0);
+                    window.scrollTo(0, 0);
                     clearInterval(timerId);
                 }
             }, 50);

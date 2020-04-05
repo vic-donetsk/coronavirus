@@ -3,7 +3,7 @@
         <div v-for="(thank, index) in thanks" :key="index" class="footer_thanks">
             {{thank.text}} <span>{{thank.owner}}</span>: <a :href="thank.link">{{thank.link}}</a>
         </div>
-        <div class="footer_copyright">© Разработка сайта. Vic Pavlovsky, 2020</div>
+        <div class="footer_copyright">© Оформление и разработка сайта. Vic Pavlovsky, 2020</div>
     </footer>
 </template>
 

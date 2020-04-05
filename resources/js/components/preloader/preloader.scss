@@ -1,0 +1,78 @@
+/* размеры прелоадера */
+$width: 15vw;
+$height: 10vh;
+/* количество шариков в прелоадере */
+/* для изменения нужно еще поменять массив в v-for vue-файла*/
+$items: 9;
+/* длительность одного цикла */
+$duration: 0.8s;
+
+.preloader_wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #f7ffe5;
+    z-index: 15;
+
+    transition: all 0.5s ease;
+
+    &.preloader_hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.preloader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $width;
+    height: $height;
+    transform: translate(-50%, -50%);
+
+    .preloader_item {
+        width: $width / 2;
+        height: $height / 2;
+        transform-origin: 100% 50%;
+        position: absolute;
+
+        @for $i from 0 to $items {
+            &:nth-child(#{$i}) {
+                transform: rotate($i * 40deg);
+            }
+        }
+    }
+
+    .preloader_item-circle {
+        background: #ffe773;
+        opacity: 0;
+        //border: 1px solid black;
+        width: $height / 2;
+        height: $height / 2;
+        border-radius: 50%;
+
+        animation-name: loader;
+        animation-duration: $duration;
+        animation-iteration-count: infinite;
+    }
+
+    @for $i from 0 to $items {
+        .mod_#{$i} {
+            animation-delay: $duration * $i / $items;
+        }
+    }
+
+    @keyframes loader {
+
+        @for $i from 0 through 4 {
+            #{(100% * $i / ($items - 1))} {
+                opacity: 1 - 0.25 * $i;
+            }
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+}
