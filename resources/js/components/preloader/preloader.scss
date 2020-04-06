@@ -1,3 +1,5 @@
+@import '@/app';
+
 /* размеры прелоадера */
 $width: 15vw;
 $height: 10vh;
@@ -48,7 +50,6 @@ $duration: 0.8s;
     .preloader_item-circle {
         background: #ffe773;
         opacity: 0;
-        //border: 1px solid black;
         width: $height / 2;
         height: $height / 2;
         border-radius: 50%;

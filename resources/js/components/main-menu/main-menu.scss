@@ -3,6 +3,7 @@
 .mainMenu {
     position: relative;
     z-index: 3;
+    width: 100%;
 
     &_desktop {
         width: 100%;
@@ -15,7 +16,7 @@
         }
     }
 
-    &_mobile-wrapper {
+    &_mobile {
         position: relative;
         display: none;
         width: 100%;
@@ -32,7 +33,7 @@
         }
     }
 
-    &_mobile {
+    &_mobile-content {
         position: absolute;
         top: 0;
         left: 0;
@@ -41,12 +42,12 @@
         padding-left: 10px;
         background: wheat;
         overflow: hidden;
-        transition: height 0.5s linear 0.5s, padding 0.5s linear;
+        transition: height 0.2s linear, padding 0.2s linear 0.1s;
 
         &.is-active {
             height: 250px;
             padding-top: 90px;
-
+            transition: height 0.2s linear 0.1s, padding 0.2s linear;
         }
     }
 

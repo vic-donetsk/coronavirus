@@ -11,13 +11,13 @@
             </div>
         </div>
 
-        <div class="mainMenu_mobile-wrapper">
+        <div class="mainMenu_mobile">
             <button class="hamburger hamburger--spring" :class="{'is-active' : isActive}" type="button" @click="menuToggle">
                 <span class="hamburger-box">
                     <span class="hamburger-inner"></span>
                 </span>
             </button>
-            <div class="mainMenu_mobile" :class="{'is-active' : isActive}">
+            <div class="mainMenu_mobile-content" :class="{'is-active' : isActive}">
                 <div v-for="(menuItem, index) in menuItems"
                      class="mainMenu_item mod_mobile"
                      :class="{mod_active: index === activeItem}"

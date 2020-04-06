@@ -2,7 +2,6 @@
 
 .main {
     width: 100%;
-    height: 100%;
     min-height: 100vh;
     display: flex;
     background-image: url("/images/bg_main.jpg");
@@ -19,7 +18,6 @@
         @include media ('less-1080') {
             display: none;
         }
-
     }
 
     .main_header {
@@ -62,12 +60,11 @@
             text-transform: uppercase;
             overflow: hidden;
 
-            //@include media('d-only') {
-                animation-delay: 0.5s;
-                animation-duration: 1.5s;
-                animation-fill-mode: forwards;
-                animation-timing-function: ease-in;
-            //}
+            animation-delay: 0.5s;
+            animation-duration: 1.5s;
+            animation-fill-mode: forwards;
+            animation-timing-function: ease-in;
+
             @include media('more-1440') {
                 animation-name: headerFeature1;
             }
