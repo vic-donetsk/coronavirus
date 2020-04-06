@@ -1,0 +1,25 @@
+$red: red;
+
+$media-expressions: (
+    /**
+     * Basic resolutions
+     */
+    // Extended media
+    'm': 'all and (min-width: 1px)',
+    't': 'all and (min-width: 600px)',
+    'd': 'all and (min-width: 1280px)',
+    // Limited media
+    'm-only': '(min-width: 1px) and (max-width: 599px)',
+    't-only': '(min-width: 600px) and (max-width: 1279px)',
+    'm-t-only': '(min-width: 1px) and (max-width: 1279px)',
+    'd-only': '(min-width: 1280px)',
+    'middle-d-only': '(min-width: 1080px)',
+
+    // Other media
+    'more-1440': '(min-width: 1440px)',
+    'less-1440': '(max-width: 1440px)',
+    'less-1080': '(max-width: 1080px)',
+    'less-780': '(max-width: 780px)',
+    'less-510': '(max-width: 510px)',
+    'less-390': '(max-width: 390px)',
+);

@@ -1,6 +1,9 @@
+@import '@/app';
+
 .main {
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
     display: flex;
     background-image: url("/images/bg_main.jpg");
     background-size: cover;
@@ -8,9 +11,15 @@
 
     &_aside {
         flex-shrink: 0;
-        width: 300px;
-        height: 100%;
+        width: 16vw;
+        min-height: 100vh;
         background-image: url("/images/stalevar.jpg");
+        background-size: cover;
+
+        @include media ('less-1080') {
+            display: none;
+        }
+
     }
 
     .main_header {
@@ -24,11 +33,26 @@
         background: linear-gradient(to right bottom, #ff3847, #7f0004);
         overflow: hidden;
 
+        @include media ('less-780') {
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
         &-name {
             font-size: 75px;
             font-weight: bold;
             padding-right: 40px;
             text-align: right;
+
+            @include media ('less-1440') {
+                font-size: 50px;
+            }
+            @include media ('less-780') {
+                padding-right: 0;
+            }
+            @include media ('less-510') {
+                font-size: 30px;
+            }
         }
 
         &-feature {
@@ -38,18 +62,49 @@
             text-transform: uppercase;
             overflow: hidden;
 
-            animation-name: headerFeature;
-            animation-delay: 0.5s;
-            animation-duration: 1.5s;
-            animation-fill-mode: forwards;
-            animation-timing-function: ease-in;
+            //@include media('d-only') {
+                animation-delay: 0.5s;
+                animation-duration: 1.5s;
+                animation-fill-mode: forwards;
+                animation-timing-function: ease-in;
+            //}
+            @include media('more-1440') {
+                animation-name: headerFeature1;
+            }
+            @include media('less-1440') {
+                animation-name: headerFeature2;
+            }
+            @include media('less-510') {
+                animation-name: headerFeature3;
+            }
+            @include media ('less-780') {
+                text-align: center;
+            }
 
-            @keyframes headerFeature {
+            @keyframes headerFeature1 {
                 from {
                     font-size: 0;
                 }
                 to {
                     font-size: 75px;
+                }
+            }
+
+            @keyframes headerFeature2 {
+                from {
+                    font-size: 0;
+                }
+                to {
+                    font-size: 50px;
+                }
+            }
+
+            @keyframes headerFeature3 {
+                from {
+                    font-size: 0;
+                }
+                to {
+                    font-size: 30px;
                 }
             }
         }
@@ -58,7 +113,7 @@
     &_content {
         position: relative;
         width: 100%;
-        height: 100%;
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -71,6 +126,14 @@
             font-style: italic;
             letter-spacing: 0.1em;
             color: #66000a;
+
+            @include media ('less-780') {
+                font-size: 25px;
+            }
+
+            @include media ('less-510') {
+                font-size: 16px;
+            }
         }
 
         &-info {
@@ -81,6 +144,15 @@
             border: 7px double black;
             border-radius: 15px;
 
+            @include media ('less-780') {
+                width: auto;
+                margin: 0 10px;
+            }
+
+            @include media ('less-510') {
+                padding: 10px;
+            }
+
             .info-row {
                 display: flex;
                 justify-content: space-between;
@@ -88,6 +160,14 @@
                 font-weight: 700;
                 line-height: 1.5;
                 color: #464464;
+
+                @include media ('less-510') {
+                    font-size: 20px;
+                }
+
+                @include media ('less-390') {
+                    font-size: 15px;
+                }
             }
         }
 
@@ -99,6 +179,10 @@
             margin: 50px auto 0;
             padding: 20px;
             z-index: 2;
+
+            @include media ('less-780') {
+                display: none;
+            }
 
             .links_item {
                 padding: 10px 15px;

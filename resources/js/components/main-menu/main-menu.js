@@ -5,7 +5,8 @@ export default {
                 {title: 'Главная', route: '/'},
                 {title: 'Информация по странам', route: 'virus'},
                 {title: 'Курсы валют', route: 'currency'},
-            ]
+            ],
+            isActive: false
         }
     },
     props: ['activeItem'],
@@ -14,6 +15,9 @@ export default {
             if (index !== this.activeItem) {
                 this.$router.push(this.menuItems[index].route);
             }
+        },
+        menuToggle() {
+            this.isActive = !this.isActive;
         }
     }
 }
