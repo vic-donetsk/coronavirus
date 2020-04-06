@@ -59,7 +59,7 @@
                 text-transform: uppercase;
                 color: #000;
 
-                .header_title {
+                .header_sort {
                     cursor: pointer;
 
                     &.mod_active, &:hover {
@@ -122,5 +122,10 @@
     &_error {
         width: 50%;
         margin: 50px auto;
+    }
+    .critical {
+        @include media('less-1440') {
+            display: none;
+        }
     }
 }

@@ -10,11 +10,11 @@
                 <div class="virusTable_row mod_header">
                     <div v-for="(header, index) in tableHeaders"
                          class="virusTable_row-item mod_header-item"
-                         :class="{ 'mod_name' : index===1, 'mod_num' : index===0}"
+                         :class="[columnNames[index-1], { 'mod_name' : index===1, 'mod_num' : index===0}]"
                     >
 
                         <div
-                            :class="{header_title:[0, 1].indexOf(index) === -1, mod_active: activeItem === tableHeaders[index].class}"
+                            :class="{header_sort:[0, 1].indexOf(index) === -1, mod_active: activeItem === tableHeaders[index].class}"
                             @click="sortData(tableHeaders[index].class, false)"
                         >
                             {{tableHeaders[index].title}}
