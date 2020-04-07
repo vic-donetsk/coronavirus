@@ -12,14 +12,27 @@
 
 .currency {
     padding: 20px;
-    margin-bottom: 50px;
+    margin: 0 10px 50px;
     background: #c7ffd7;
     border: 10px ridge #a8c365;
+
+    @include media('less-580') {
+        padding: 20px 10px;
+    }
 
     &_title {
         font-size: 30px;
         font-weight: 700;
         margin-bottom: 20px;
+
+        @include media('less-820') {
+            font-size: 22px;
+            text-align: center;
+        }
+        @include media('less-390') {
+            font-size: 16px;
+            text-align: center;
+        }
     }
 
     &_row {
@@ -30,11 +43,24 @@
         &-item {
             flex: 1;
             text-align: center;
-            font-size: 50px;
+
+            @include media('less-580') {
+                font-size: 30px;
+            }
 
             &.mod_head {
                 font-size: 30px;
                 font-weight: 900;
+
+                @include media('less-820') {
+                    font-size: 22px;
+                }
+
+                @include media('less-390') {
+                    font-size: 16px;
+                }
+
+
             }
 
             &.mod_name {
@@ -48,17 +74,38 @@
                     flex: 1;
                     margin-left: 15px;
                     font-weight: 700;
+
+                    @include media('less-390') {
+                        margin-left: 0;
+                        font-size: 16px;
+                    }
                 }
             }
 
             &.mod_data {
                 color: #2100d0;
+                font-size: 50px;
                 cursor: default;
                 transition: transform .3s ease, font-size .3s ease;
 
+                @include media('less-820') {
+                    font-size: 50px;
+                }
+
+                @include media('less-580') {
+                    font-size: 30px;
+                }
+
+                @include media('less-390') {
+                    font-size: 22px;
+                    font-weight: 700;
+                }
+
                 &:hover {
-                    font-size: 63px;
-                    transform: translateY(5px);
+                    @include media('more-820') {
+                        font-size: 63px;
+                        transform: translateY(5px);
+                    }
                 }
             }
         }
@@ -67,6 +114,10 @@
 
 .coin {
     transition: transform 1s ease;
+
+    @include media('less-820') {
+        display: none;
+    }
 
     &:hover {
         transform: rotateY(180deg);
