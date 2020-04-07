@@ -6,12 +6,25 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: #f7ffe5;
+
+    @include media('less-1080') {
+        width: fit-content;
+        min-width: 100%;
+    }
+}
+
+.virusTable_wrapper {
+    padding: 0 10px;
 }
 
 .virusTable {
     width: 90vw;
     margin: 0 auto 50px;
     border-right: 2px solid black;
+
+    @include media('less-1080') {
+        width: 972px;
+    }
 
     &_row {
         display: flex;
@@ -135,4 +148,5 @@
         width: 50%;
         margin: 50px auto;
     }
+
 }
