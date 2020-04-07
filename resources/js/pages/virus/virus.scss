@@ -14,12 +14,14 @@
 }
 
 .virusTable_wrapper {
-    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .virusTable {
     width: 90vw;
-    margin: 0 auto 50px;
+    margin: 0 10px 50px;
     border-right: 2px solid black;
 
     @include media('less-1080') {

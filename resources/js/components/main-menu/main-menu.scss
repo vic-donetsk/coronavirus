@@ -11,7 +11,7 @@
         justify-content: space-around;
         padding: 20px;
 
-        @include media ('less-780') {
+        @include media ('less-1080') {
             display: none;
         }
     }
@@ -22,7 +22,7 @@
         width: 100%;
         padding: 10px;
 
-        @include media('less-780') {
+        @include media('less-1080') {
             display: block;
         }
 

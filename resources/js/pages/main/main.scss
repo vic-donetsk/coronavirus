@@ -177,6 +177,10 @@
             padding: 20px;
             z-index: 2;
 
+            @include media ('less-1080') {
+                margin-top: 20px;
+            }
+
             @include media ('less-780') {
                 display: none;
             }
