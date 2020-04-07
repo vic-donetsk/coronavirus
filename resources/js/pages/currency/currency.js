@@ -30,7 +30,7 @@ export default {
                 let monthA = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
                 let minutes = (currentData.getMinutes() > 10) ? currentData.getMinutes() : '0' + String(currentData.getMinutes());
                 this.textDate = currentData.getDate() + ' ' + monthA[currentData.getMonth()] + ' ' + currentData.getFullYear() + ' года,     ' +
-                    currentData.getHours() + ':' + currentData.getMinutes();
+                    currentData.getHours() + ':' + minutes;
                 this.hasError = false;
             })
             .catch((error) => {
