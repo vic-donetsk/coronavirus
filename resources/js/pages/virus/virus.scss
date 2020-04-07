@@ -29,23 +29,28 @@
 
         &-item {
             display: flex;
-            width: 8vw;
+            width: 9%;
             justify-content: flex-end;
             align-items: center;
             padding: 5px 10px;
             border-left: 2px solid black;
+            font-size: 16px;
             font-weight: bold;
             background: #c7ffd7;
 
+            @include media('less-1280') {
+                font-size: 12px;
+            }
+
             &.mod_name {
-                width: 14vw;
+                width: 15%;
                 justify-content: flex-start;
                 text-align: left;
                 color: darkblue;
             }
 
             &.mod_num {
-                width: 4vw;
+                width: 4%;
             }
 
             &.mod_header-item {
@@ -58,6 +63,13 @@
                 font-weight: 900;
                 text-transform: uppercase;
                 color: #000;
+
+                @include media('less-1440') {
+                    font-size: 12px;
+                }
+                @include media('less-1280') {
+                    font-size: 10px;
+                }
 
                 .header_sort {
                     cursor: pointer;
@@ -122,10 +134,5 @@
     &_error {
         width: 50%;
         margin: 50px auto;
-    }
-    .critical {
-        @include media('less-1440') {
-            display: none;
-        }
     }
 }

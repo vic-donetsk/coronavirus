@@ -10,7 +10,7 @@
                 <div class="virusTable_row mod_header">
                     <div v-for="(header, index) in tableHeaders"
                          class="virusTable_row-item mod_header-item"
-                         :class="[columnNames[index-1], { 'mod_name' : index===1, 'mod_num' : index===0}]"
+                         :class="[header.class, { 'mod_name' : index===1, 'mod_num' : index===0}]"
                     >
 
                         <div
