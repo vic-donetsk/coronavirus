@@ -40,8 +40,8 @@ export default {
         document.title = 'Карантин - детали';
         axios.get('https://coronavirus-19-api.herokuapp.com/countries')
             .then((response) => {
-                this.tableRows = response.data;
-                this.sortData(this.activeItem, this.ascDirection);
+                let tableData = response.data;
+                this.tableRows = this.sortData(tableData, this.activeItem, this.ascDirection);
                 this.hasError = false;
             })
             .catch((error) => {
@@ -67,13 +67,24 @@ export default {
         })
     },
     methods: {
-        sortData(fieldKey, ascDirection) {
+        sortData(inputArray, fieldKey, ascDirection) {
+            let continents = ["Africa", "Asia", "Oceania", "Europe", "North America", "South America"];
+            let tmpArray = [];
+            for (let item of inputArray) {
+                if (continents.indexOf(item.country) === -1) {
+                    tmpArray.push(item);
+                }
+            }
+
             if (ascDirection)
-                this.tableRows.sort((a, b) => a[fieldKey] > b[fieldKey] ? 1 : -1);
+                tmpArray.sort((a, b) => a[fieldKey] > b[fieldKey] ? 1 : -1);
             else
-                this.tableRows.sort((a, b) => a[fieldKey] < b[fieldKey] ? 1 : -1);
+                tmpArray.sort((a, b) => a[fieldKey] < b[fieldKey] ? 1 : -1);
             this.activeItem = fieldKey;
             this.ascDirection = ascDirection;
+            console.log(tmpArray);
+
+            return tmpArray;
         },
         scrollHome() {
             let currentScroll = window.pageYOffset;
