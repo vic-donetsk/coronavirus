@@ -40,8 +40,8 @@ export default {
         document.title = 'Карантин - детали';
         axios.get('https://coronavirus-19-api.herokuapp.com/countries')
             .then((response) => {
-                this.tableRows = response.data;
-                this.tableRows.sortData(this.activeItem, this.ascDirection);
+                this.tableRows = this.explodeCountries(response.data);
+                this.sortData(this.activeItem, this.ascDirection);
                 this.hasError = false;
             })
             .catch((error) => {
