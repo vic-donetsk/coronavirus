@@ -75,14 +75,12 @@ export default {
                     tmpArray.push(item);
                 }
             }
-
             if (ascDirection)
                 tmpArray.sort((a, b) => a[fieldKey] > b[fieldKey] ? 1 : -1);
             else
                 tmpArray.sort((a, b) => a[fieldKey] < b[fieldKey] ? 1 : -1);
             this.activeItem = fieldKey;
             this.ascDirection = ascDirection;
-            console.log(tmpArray);
 
             return tmpArray;
         },
