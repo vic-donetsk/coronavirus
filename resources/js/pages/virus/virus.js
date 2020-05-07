@@ -68,7 +68,7 @@ export default {
     },
     methods: {
         explodeCountries(inputArray) {
-            let continents = ["Africa", "Asia", "Oceania", "Europe", "North America", "South America"];
+            let continents = ["Africa", "Asia", "Oceania", "Europe", "North America", "South America", "Total:"];
             let tmpArray = [];
             for (let item of inputArray) {
                 if (continents.indexOf(item.country) === -1) {
