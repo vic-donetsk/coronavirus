@@ -19,3 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/curses', 'CurrencyController@index')->name('curses');
+
+Route::post('/test', 'CurrencyController@testRequest')->name('testRequest');
+
+Route::post('/sklad/{order}', 'CurrencyController@testSklad');

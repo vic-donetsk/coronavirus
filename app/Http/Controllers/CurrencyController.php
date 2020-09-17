@@ -2,40 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TestRequest;
+use App\Services\CurrencyService;
+use Carbon\Carbon;
+use Currency;
+
 class CurrencyController extends Controller
 {
 
     public function index()
     {
-
-        $ch = curl_init("https://obmenka-mariupol.com.ua/");
-
-        // set URL and other appropriate options
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // return into a variable
-        // grab URL and pass it to variable
-        $page = curl_exec($ch);
-        // close cURL resource, and free up system resources
-        curl_close($ch);
-
-        if ($page === false) {
-            // ошибка запроса
-
-            return response()->json(false);
-        }
-
-        $tmp_array = explode('currencies__block-link', $page);
-
-        $result_array = [];
-
-        for ($i = 0; $i < 3; $i++) {
-            $one_currency = explode('block-num">', $tmp_array[$i + 1]);
-            $curses = [];
-            for ($j = 0; $j < 2; $j++) {
-                $curses[] = substr($one_currency[$j + 1], 0, strpos($one_currency[$j + 1], '<'));
-            }
-            $result_array[] = $curses;
-        }
-
-        return response()->json($result_array);
+        return response()->json(Currency::parseUrl());
     }
+
+    public function testRequest(TestRequest $request) {
+
+
+        return response()->json($request->all());
+    }
+
+    public function testSklad($order)
+    {
+        if ($order = 666) {
+            info('updating order');
+            info(Carbon::now());
+        } else {
+            info('creating order');
+            info(Carbon::now());
+        }
+    }
+
+
 }

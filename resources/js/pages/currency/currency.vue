@@ -26,6 +26,18 @@
 
         </div>
 
+        <form class="currency mod_form" @submit="sendForm" novalidate="true">
+
+            <div v-for="(value, name) in formData" class="form_item">
+                <div class="form_item-title">{{name}}</div>
+                <input :id="name" type="text" v-model="formData[name]" :class="{hasError : validationErrors[name]}">
+                <div v-if="validationErrors[name]" class="form_item-error">{{validationErrors[name]}}</div>
+            </div>
+
+
+            <button type="submit" >Send</button>
+        </form>
+
 
         <my-footer/>
 
